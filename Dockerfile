@@ -69,10 +69,6 @@ ENV DEBIAN_FRONTEND=noninteractive \
 # Add required packages
 RUN apt-get update -y && \
     apt-get install curl sudo lsb-release inetutils-tools sqlite3 vim -y 
-RUN wget https://dev.mysql.com/get/mysql-apt-config_0.8.24-1_all.deb
-RUN DEBIAN_FRONTEND=noninteractive dpkg -i mysql-apt-config_0.8.24-1_all.deb
-RUN apt-get update
-RUN apt install -y mysql-client
 
 COPY --from=perl-build scot.perl.install.tar.gz /app/scot.perl.install.tar.gz
 
