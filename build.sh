@@ -141,7 +141,7 @@ function verify_modules {
         output ${red} "The Following Modules appear to be missing:"
         for x in $missing; do
             output ${red} "    $x"
-            fm = $(retry_module $x)
+            fm=$(retry_module $x)
             if [[ "$fm" != "" ]]; then
                 failed="$failed $fm"
                 output ${red} "Retry of $x failed"
@@ -164,7 +164,7 @@ function verify_modules {
 }
 
 function retry_module {
-    module = "$1"
+    module="$1"
     /opt/perl/bin/cpanm -v --sudo $module
     /opt/perl/bin/perl -e "use $module;" 2>/dev/null
     if [[ "$?" != 0 ]]; then

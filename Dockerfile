@@ -24,6 +24,7 @@ RUN apt-get update -y && \
                     libimlib2 \
                     libimlib2-dev \
                     libkrb5-3 \
+                    libkrb5-dev \
                     libkrb5support0 \
                     libmagic-dev \
                     libmagic-ocaml-dev \
