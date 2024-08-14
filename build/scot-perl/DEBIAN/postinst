@@ -1,0 +1,31 @@
+#!/bin/bash
+
+SUDOERS="/etc/sudoers"
+TMP="/tmp/sudoers"
+PROFILED="/etc/profile.d/scot-perl.sh"
+
+echo "Adding scot-perl to path and sudo secure path"
+
+if [[ ":$PATH:" == *":/opt/perl/bin:"* ]];then
+    echo "Path already contains /opt/perl/bin"
+    echo "export PATH=$PATH" > $PROFILED
+else
+    NEWPATH="/opt/perl/bin:$PATH"
+    echo "export PATH=$NEWPATH" > $PROFILED
+    echo "------------- IMPORTANT ------------"
+    echo "you must either:"
+    echo "   1.   Log out and back in to pick up new path"
+    echo "   2.   source $PROFILED"
+    echo " Before attempting to use SCOT or VAST"
+fi
+
+if grep secure_path $SUDOERS | grep -q '/opt/perl/bin'; then
+    echo "New Perl path already present"
+else
+    echo "modifying $SUDOERS to include new perl path"
+    sed 's/secure_path="\(.*\)"/secure_path="\/opt\/perl\/bin:\1"/' $SUDOERS > $TMP
+    sudo chown root.root $TMP
+    sudo chmod 440 $TMP
+    sudo mv $TMP $SUDOERS
+fi
+

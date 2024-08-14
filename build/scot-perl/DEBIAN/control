@@ -1,0 +1,10 @@
+Package: scot-perl
+version: 5.38.2
+Section: custom
+Priority: optional
+Architecture: all
+Essential: no
+Installed-Size: 218452
+Maintainer: Todd Bruner <tbruner@sandia.gov>
+Description: Perl 5.38.2 and Libraries necessary to run SCOT and VAST
+Depends: build-essential, libssl-dev, libpq-dev, libexpat1-dev, zlib1g, zlib1g-dev, libgssapi-krb5-2, libkrb5support0, libkrb5-3, krb5-doc, libimlib2-dev, libimlib2, libmagic-dev, libmagic1, apache2, apache2-utils, bc, libgmp3-dev, libmagickcore-6-headers, libmagick++-6-headers, libmagickwand-6-headers, libmagic-dev, libmagick++-6.q16-dev, libmagickcore-6.q16-dev, libmagickcore-dev, libmagick++-dev, libmagickwand-6.q16-dev, libmagickwand-dev, libmagic-ocaml-dev, libmagics++-dev, libmagics++-metview-dev, mmdb-bin, libgeoip-dev, libmaxminddb0, libmaxminddb-dev, libmysqlclient-dev, postgresql-server-dev-all, libsqlite3-0, libsqlite3-dev
