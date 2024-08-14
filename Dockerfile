@@ -1,4 +1,4 @@
-FROM debian:bookworm as perl-build
+FROM debian:bookworm AS perl-build
 
 WORKDIR /app
 ENV DEBIAN_FRONTEND=noninteractive \
@@ -39,9 +39,10 @@ RUN apt-get update -y && \
                     libmagickwand-dev \
                     libmagics++-dev \
                     libmagics++-metview-dev \
+                    libmariadb-dev \ 
+                    libmariadb-dev-compat \
                     libmaxminddb-dev \
                     libmaxminddb0 \
-                    libmysqlclient-dev \
                     libpq-dev \ 
                     libsqlite3-0 \
                     libsqlite3-dev \
@@ -65,10 +66,13 @@ WORKDIR /app
 ENV DEBIAN_FRONTEND=noninteractive \
     DEBCONF_NONINTERACTIVE_SEEN=true
 
-
 # Add required packages
 RUN apt-get update -y && \
-    apt-get install curl sudo mysql-client sqlite3 vim -y 
+    apt-get install curl sudo lsb-release inetutils-tools sqlite3 vim -y 
+RUN wget https://dev.mysql.com/get/mysql-apt-config_0.8.24-1_all.deb
+RUN DEBIAN_FRONTEND=noninteractive dpkg -i mysql-apt-config_0.8.24-1_all.deb
+RUN apt-get update
+RUN apt install -y mysql-client
 
 COPY --from=perl-build scot.perl.install.tar.gz /app/scot.perl.install.tar.gz
 
