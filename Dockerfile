@@ -61,6 +61,8 @@ COPY . /app
 
 RUN ./build.sh
 
+RUN ls -ltrah /app
+
 FROM debian:bookworm
 
 WORKDIR /app
@@ -71,7 +73,7 @@ ENV DEBIAN_FRONTEND=noninteractive \
 RUN apt-get update -y && \
     apt-get install curl sudo lsb-release inetutils-tools sqlite3 vim -y 
 
-COPY --from=perl-build scot.perl.install.tar.gz /app/scot.perl.install.tar.gz
+COPY --from=perl-build /app/scot.perl.install.tar.gz /app/scot.perl.install.tar.gz
 
 # Unzip and install scot-perl
 RUN tar -xzf /app/scot.perl.install.tar.gz && \

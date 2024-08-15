@@ -219,8 +219,8 @@ function replace_old_js {
     siteperl="/opt/perl/lib/site_perl/$perl_ver"
     miniondir="$siteperl/Mojolicious/Plugin/Minion/resources/public/minion"
     cp $resources/moment.min.js       $miniondir/moment/moment.js
-    cp $resoutces/bootstrap.min.js    $miniondir/bootstrap/bootstrap.js
-    cp $resoutces/bootstrap.min.css   $miniondir/bootstrap/bootstrap.css
+    cp $resources/bootstrap.min.js    $miniondir/bootstrap/bootstrap.js
+    cp $resources/bootstrap.min.css   $miniondir/bootstrap/bootstrap.css
     cp $resources/jquery-3.6.4.min.js $siteperl/Mojolicious/resources/public/mojo/jquery/jquery.js
 }
 
