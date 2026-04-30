@@ -81,7 +81,6 @@ requires 'Log::Log4perl';
 requires 'LWP';
 requires 'LWP::Authen::Ntlm';
 requires 'LWP::Authen::Negotiate';
-# requires 'LWP::ConsoleLogger::Easy';
 requires 'LWP::Debug';
 requires 'LWP::Protocol::https';
 requires 'LWP::Simple';
