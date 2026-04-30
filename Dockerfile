@@ -42,6 +42,7 @@ RUN apt-get update -y && \
                     libmagics++-metview-dev \
                     libmariadb-dev \ 
                     libmariadb-dev-compat \
+                    libdbd-mariadb-perl \
                     libmaxminddb-dev \
                     libmaxminddb0 \
                     libpq-dev \ 
@@ -58,6 +59,9 @@ RUN apt-get update -y && \
                     -y
 
 COPY . /app
+
+ENV MOJO_MYSQL_PREFER_MARIADB=1 \ 
+    MOJO_MYSQL_PREFER_DRIVER="DBD::MariaDB"
 
 RUN ./build.sh
 
